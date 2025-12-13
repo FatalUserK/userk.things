@@ -1,12 +1,12 @@
 local entity_id = GetUpdatedEntityID()
 local x,y = EntityGetTransform(entity_id)
 
-print("a")
---do this in case some loser turns off my super cool and awesome better bloody buggets
+--do this in case some loser turns off my super cool and awesome better bloody nuggets
 local vanilla_bloody
-local healing
 
 local material = "GID_gold"
+
+local healing = 0
 local gold = 0
 for _, varcomp in ipairs(EntityGetComponent(entity_id, "VariableStorageComponent") or {}) do
     local name = ComponentGetValue2(varcomp, "name")
@@ -32,10 +32,23 @@ local bloody_values = {
 }
 if vanilla_bloody then material = bloody_values[healing/gold] or "GID_bloody_gold10" end
 
-GameCreateParticle(material, x, y, gold, 0, 0, false)
 
 
+local amountx1 = gold
+local amountx10 = 0
+local amountx100 = 0
 
+while amountx1>1000 do
+    amountx1 = amountx1 - 100
+    amountx10 = amountx10 + 10
+end
+while amountx10>1000 do
+    amountx10 = amountx10 - 100
+    amountx100 = amountx100 + 10
+end
 
+GameCreateParticle(material, x, y, amountx1, 0, 0, false)
+GameCreateParticle(material .. "x10", x, y, amountx10, 0, 0, false)
+GameCreateParticle(material .. "x100", x, y, amountx100, 0, 0, false)
 
 EntityKill(entity_id)
