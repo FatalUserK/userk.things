@@ -1,5 +1,5 @@
 <Entity>
-	<LifetimeComponent lifetime="12"/>
+	<LifetimeComponent lifetime="1"/>
 
 	<InheritTransformComponent/>
 
@@ -17,12 +17,22 @@
 
 	<PlatformShooterPlayerComponent/>
 
+	<LuaComponent
+		script_shot="mods/gold_is_dust/files/spells_materialised/assign_blame.lua"
+	/>
+
 	<Entity name="inventory_quick">
 		<Entity>
 			<AbilityComponent
 				mana="10000"
 				mana_max="10000"
 				use_gun_script="1"
+				never_reload="1"
+			/>
+			<HotspotComponent
+				_tags="shoot_pos"
+				offset.x="7"
+				offset.y="-.5"
 			/>
 		</Entity>
 	</Entity>

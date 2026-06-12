@@ -1,3 +1,5 @@
 mat_GID_bloody_gold,bloody gold,,,,,,,,,,,,,
-perk_gold_is_dust,Gold Is Dust,,,,,,,,,,,,,
-perkdesc_gold_is_dust,Gold nuggets decay into dust.,,,,,,,,,,,,,
+userk.gold_is_dust.perkname,Gold Is Dust,,,,,,,,,,,,,
+userk.gold_is_dust.perkdesc,Gold nuggets decay into dust.,,,,,,,,,,,,,
+userk.spells_materialised.perkname,Spells Materialised,,,,,,,,,,,,,
+userk.spells_materialised.perkdesc,Spells can be held in the ITEMS space in inventory and used like throwable items.,,,,,,,,,,,,,
