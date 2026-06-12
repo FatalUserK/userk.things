@@ -3,8 +3,8 @@ local perk_replacements = {
 		id = "USERK.GOLD_IS_DUST",
 		ui_name = "$userk.gold_is_dust.perkname",
 		ui_description = "$userk.gold_is_dust.perkdesc",
-		ui_icon = "mods/gold_is_dust/files/gold_is_dust/gold_is_dust.png",
-		perk_icon = "mods/gold_is_dust/files/gold_is_dust/icon_gold_is_dust.png",
+		perk_icon = "mods/gold_is_dust/files/gold_is_dust/perk.png",
+		ui_icon = "mods/gold_is_dust/files/gold_is_dust/icon.png",
 		author = "UserK",
 		origin = "UserK's Things",
 		stackable = false,
@@ -18,7 +18,9 @@ local perk_replacements = {
 	ABILITY_ACTIONS_MATERIALIZED = {
 		id = "USERK.SPELLS_MATERIALISED",
 		ui_name = "$userk.spells_materialised.perkname",
-		ui_description = "$userk.spells_materialised.perkdesc"
+		ui_description = "$userk.spells_materialised.perkdesc",
+		perk_icon = "mods/gold_is_dust/files/spells_materialised/perk.png",
+		ui_icon = "mods/gold_is_dust/files/spells_materialised/icon.png",
 	}
 }
 

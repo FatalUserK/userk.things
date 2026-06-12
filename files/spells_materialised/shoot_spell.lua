@@ -1,9 +1,14 @@
-local entity_id = GetUpdatedEntityID()
-local parent = EntityGetParent(entity_id)
-local inv2 = EntityGetFirstComponentIncludingDisabled(parent, "Inventory2Component")
-if not inv2 then return end
+dofile_once("mods/gold_is_dust/files/spells_materialised/custom_spell_behaviour.lua")
 
-function shot(_)
+function shot(projectile)
+	if EntityGetName(projectile) ~= "userk.empty" then return end --so sick of this nonsense script_shot bs.
+	--might genuinely replace with just checking mousebuttonjustdown atp
+
+	local entity_id = GetUpdatedEntityID()
+	local parent = EntityGetParent(entity_id)
+	local inv2 = EntityGetFirstComponentIncludingDisabled(parent, "Inventory2Component")
+	if not inv2 then return end
+
 	local held_item = ComponentGetValue2(inv2, "mActualActiveItem")
 
 	local item_action_comp = EntityGetFirstComponentIncludingDisabled(held_item, "ItemActionComponent")
@@ -15,25 +20,11 @@ function shot(_)
 	if uses_remaining == 0 then return end
 
 	local id = ComponentGetValue2(item_action_comp, "action_id")
-
-	local fake_cast = EntityLoad("mods/gold_is_dust/files/spells_materialised/fake_cast.xml")
-	EntitySetTransform(fake_cast, EntityGetTransform(entity_id))
-	EntityAddChild(entity_id, fake_cast)
-
-	local inventory_comp = EntityGetAllChildren(fake_cast)[1]
-	local gun = EntityGetAllChildren(inventory_comp)[1]
-
-	local plat_shooter = EntityGetFirstComponentIncludingDisabled(fake_cast, "PlatformShooterPlayerComponent")
-	if not plat_shooter then return end
-
-	local fake_cast_spell_card = EntityCreateNew()
-	EntityAddChild(gun, fake_cast_spell_card)
-	EntityAddComponent2(fake_cast_spell_card, "ItemActionComponent", {action_id = id})
-
-	local fake_cast_item_comp = EntityAddComponent2(fake_cast_spell_card, "ItemComponent")
-	ComponentSetValue2(fake_cast_item_comp, "inventory_slot", 1, 1)
-
-	ComponentSetValue2(plat_shooter, "mForceFireOnNextUpdate", true)
+	if SPELLS_MATERIALISED_CUSTOM_BEHAVIOUR[id] then
+		SPELLS_MATERIALISED_CUSTOM_BEHAVIOUR[id](entity_id, inv2, held_item, uses_remaining)
+	else
+		normal_cast(entity_id, id)
+	end
 
 	if uses_remaining ~= -1 then
 		ComponentSetValue2(item_comp, "uses_remaining", uses_remaining - 1)

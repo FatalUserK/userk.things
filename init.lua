@@ -5,7 +5,14 @@ local settings = {
 	spells_materialised = true,
 }
 
+
 ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/gold_is_dust/files/perks_append.lua")
+
+local translations = ModTextFileGetContent("data/translations/common.csv")
+translations = translations .. "\n" .. ModTextFileGetContent("mods/gold_is_dust/files/standard.csv") .. "\n"
+translations = translations:gsub("\r", ""):gsub("\n\n+", "\n")
+ModTextFileSetContent("data/translations/common.csv", translations)
+
 
 if settings.spells_materialised then
 	local spell_card_append_targets = {

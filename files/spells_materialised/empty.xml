@@ -1,1 +1,1 @@
-<Entity><LifetimeComponent lifetime="0"/></Entity>
+<Entity name="userk.empty"><LifetimeComponent lifetime="0"/></Entity>
