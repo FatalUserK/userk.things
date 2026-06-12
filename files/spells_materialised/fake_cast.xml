@@ -1,0 +1,29 @@
+<Entity>
+	<LifetimeComponent lifetime="12"/>
+
+	<InheritTransformComponent/>
+
+	<SpriteAnimatorComponent/>
+
+	<CharacterDataComponent/>
+
+	<CharacterPlatformingComponent/>
+
+	<ControlsComponent/>
+
+	<GunComponent />
+
+	<Inventory2Component/>
+
+	<PlatformShooterPlayerComponent/>
+
+	<Entity name="inventory_quick">
+		<Entity>
+			<AbilityComponent
+				mana="10000"
+				mana_max="10000"
+				use_gun_script="1"
+			/>
+		</Entity>
+	</Entity>
+</Entity>

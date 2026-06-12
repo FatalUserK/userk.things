@@ -1,22 +1,22 @@
 <Materials>
-    <CellDataChild
-        _parent="gold"
-        name="GID_gold"
-        ui_name="$mat_gold"
-        _inherit_reactions="1"
-        wang_color="ffebc802"
-    />
+	<CellDataChild
+		_parent="gold"
+		name="GID_gold"
+		ui_name="$mat_gold"
+		_inherit_reactions="1"
+		wang_color="ffebc802"
+	/>
 
-    <CellDataChild
-        _parent="gold"
-        name="GID_bloody_gold"
-        ui_name="$mat_GID_bloody_gold"
-        _inherit_reactions="1"
-        wang_color="fff73a36"
-    >
-        <Graphics
-            texture_file="mods/gold_is_dust/files/materials/bloody_gold.png"
-            color="fff73a36"
-        />
-    </CellDataChild>
+	<CellDataChild
+		_parent="gold"
+		name="GID_bloody_gold"
+		ui_name="$mat_GID_bloody_gold"
+		_inherit_reactions="1"
+		wang_color="fff73a36"
+	>
+		<Graphics
+			texture_file="mods/gold_is_dust/files/materials/bloody_gold.png"
+			color="fff73a36"
+		/>
+	</CellDataChild>
 </Materials>
