@@ -1,4 +1,4 @@
-dofile_once("mods/gold_is_dust/files/spells_materialised/custom_spell_behaviour.lua")
+dofile_once("mods/userk.things/files/spells_materialised/custom_spell_behaviour.lua")
 
 function shot(projectile)
 	if EntityGetName(projectile) ~= "userk.empty" then return end --so sick of this nonsense script_shot bs.

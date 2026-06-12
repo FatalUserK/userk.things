@@ -1,5 +1,5 @@
 function normal_cast(caster, spell)
-	local fake_cast = EntityLoad("mods/gold_is_dust/files/spells_materialised/fake_cast.xml")
+	local fake_cast = EntityLoad("mods/userk.things/files/spells_materialised/fake_cast.xml")
 	EntitySetTransform(fake_cast, EntityGetTransform(caster))
 	EntityAddChild(caster, fake_cast)
 

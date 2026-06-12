@@ -5,14 +5,14 @@ local item_action_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "It
 if not item_action_comp then return end
 
 local id = ComponentGetValue2(item_action_comp, "action_id")
-local spells = dofile_once("mods/gold_is_dust/files/spells_materialised/keyed_spell_table.lua")
+local spells = dofile_once("mods/userk.things/files/spells_materialised/keyed_spell_table.lua")
 local spell = spells[id]
 
 local add_cast = function()
 	local ability_comp = EntityAddComponent2(entity_id, "AbilityComponent", {
 		_tags="enabled_in_hand",
 		ui_name=spell.name,
-		entity_file="mods/gold_is_dust/files/spells_materialised/empty.xml",
+		entity_file="mods/userk.things/files/spells_materialised/empty.xml",
 		rotate_hand_amount=0.05,
 		throw_as_item=true,
 		simulate_throw_as_item=true,

@@ -1,4 +1,4 @@
-local nxml = dofile_once("mods/gold_is_dust/luanxml/nxml.lua") ---@type nxml
+local nxml = dofile_once("mods/userk.things/luanxml/nxml.lua") ---@type nxml
 
 local settings = {
 	gold_is_dust = false,
@@ -6,10 +6,10 @@ local settings = {
 }
 
 
-ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/gold_is_dust/files/perks_append.lua")
+ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/userk.things/files/perks_append.lua")
 
 local translations = ModTextFileGetContent("data/translations/common.csv")
-translations = translations .. "\n" .. ModTextFileGetContent("mods/gold_is_dust/files/standard.csv") .. "\n"
+translations = translations .. "\n" .. ModTextFileGetContent("mods/userk.things/files/standard.csv") .. "\n"
 translations = translations:gsub("\r", ""):gsub("\n\n+", "\n")
 ModTextFileSetContent("data/translations/common.csv", translations)
 
@@ -34,7 +34,7 @@ if settings.spells_materialised then
 
 			xml:add_child(nxml.new_element("LuaComponent", {
 				_tags = "enabled_in_world,enabled_in_inventory,enabled_in_world",
-				script_source_file = "mods/gold_is_dust/files/spells_materialised/spell_append.lua",
+				script_source_file = "mods/userk.things/files/spells_materialised/spell_append.lua",
 				remove_after_executed = "1"
 			}))
 		end
@@ -44,7 +44,7 @@ if settings.spells_materialised then
 		for child in xml:each_of("Entity") do
 			if child.attr.name == "arm_r" then
 				child:add_child(nxml.new_element("LuaComponent", {
-					script_shot = "mods/gold_is_dust/files/spells_materialised/shoot_spell.lua"
+					script_shot = "mods/userk.things/files/spells_materialised/shoot_spell.lua"
 				}))
 			end
 		end
@@ -54,8 +54,8 @@ end
 
 
 if settings.gold_is_dust then
-	ModMaterialsFileAdd("mods/gold_is_dust/files/materials/materials.xml")
-	if ModSettingGet("GID.vanilla_bloody then") then ModMaterialsFileAdd("mods/gold_is_dust/files/materials/materials_extra_bloody.xml") end
+	ModMaterialsFileAdd("mods/userk.things/files/materials/materials.xml")
+	if ModSettingGet("GID.vanilla_bloody then") then ModMaterialsFileAdd("mods/userk.things/files/materials/materials_extra_bloody.xml") end
 
 	local list_of_nuggets = {
 		"data/entities/items/pickup/goldnugget.xml",
@@ -73,7 +73,7 @@ if settings.gold_is_dust then
 	local luacomp = nxml.new_element("LuaComponent", {
 		execute_on_added = true,
 		remove_after_executed = true,
-		script_source_file = "mods/gold_is_dust/files/gold_is_dust/nugget_check.lua"
+		script_source_file = "mods/userk.things/files/gold_is_dust/nugget_check.lua"
 	})
 
 	for _, path in ipairs(list_of_nuggets) do

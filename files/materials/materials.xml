@@ -15,7 +15,7 @@
 		wang_color="fff73a36"
 	>
 		<Graphics
-			texture_file="mods/gold_is_dust/files/materials/bloody_gold.png"
+			texture_file="mods/userk.things/files/materials/bloody_gold.png"
 			color="fff73a36"
 		/>
 	</CellDataChild>
