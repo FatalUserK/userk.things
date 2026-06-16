@@ -1,17 +1,19 @@
 local nxml = dofile_once("mods/userk.things/luanxml/nxml.lua") ---@type nxml
 
 local settings = {
-	gold_is_dust = false,
+	gold_is_dust = true,
 	spells_materialised = true,
 }
 
-
-ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/userk.things/files/perks_append.lua")
 
 local translations = ModTextFileGetContent("data/translations/common.csv")
 translations = translations .. "\n" .. ModTextFileGetContent("mods/userk.things/files/standard.csv") .. "\n"
 translations = translations:gsub("\r", ""):gsub("\n\n+", "\n")
 ModTextFileSetContent("data/translations/common.csv", translations)
+
+ModLuaFileAppend("data/scripts/perks/perk_list.lua", "mods/userk.things/files/perks_append.lua")
+ModMagicNumbersFileAdd("mods/userk.things/files/magic_numbers.xml")
+
 
 
 if settings.spells_materialised then
@@ -52,10 +54,10 @@ if settings.spells_materialised then
 end
 
 
-
 if settings.gold_is_dust then
 	ModMaterialsFileAdd("mods/userk.things/files/materials/materials.xml")
-	if ModSettingGet("GID.vanilla_bloody then") then ModMaterialsFileAdd("mods/userk.things/files/materials/materials_extra_bloody.xml") end
+	--if ModSettingGet("GID.vanilla_bloody then") then ModMaterialsFileAdd("mods/userk.things/files/materials/materials_extra_bloody.xml") end
+
 
 	local list_of_nuggets = {
 		"data/entities/items/pickup/goldnugget.xml",
@@ -68,15 +70,38 @@ if settings.gold_is_dust then
 		"data/entities/items/pickup/goldnugget_x.xml",
 	}
 
-
-
 	local luacomp = nxml.new_element("LuaComponent", {
-		execute_on_added = true,
-		remove_after_executed = true,
-		script_source_file = "mods/userk.things/files/gold_is_dust/nugget_check.lua"
+		script_source_file = "mods/userk.things/files/gold_is_dust/nugget_expire.lua",
+		execute_every_n_frame = -1,
+		execute_on_removed = true
 	})
 
 	for _, path in ipairs(list_of_nuggets) do
 		for xml in nxml.edit_file(path) do xml:add_child(luacomp) end
+	end
+
+
+	for xml in nxml.edit_file("data/entities/player_base.xml") do
+		xml:add_child(nxml.new_element("Entity", {name="userk.gold_collect"}, {
+			nxml.new_element("InheritTransformComponent", {}, {
+				nxml.new_element("Transform", {
+					["position.y"]="6"
+				})
+			}),
+			nxml.new_element("MaterialSuckerComponent", {
+				material_type = "1",
+				suck_tag = "[userk.gold]",
+				barrel_size="100",
+				num_cells_sucked_per_frame="50",
+				["randomized_position.min_x"]="-5",
+				["randomized_position.max_x"]="5",
+				["randomized_position.min_y"]="-4",
+				["randomized_position.max_y"]="-1",
+			}),
+			nxml.new_element("MaterialInventoryComponent"),
+			nxml.new_element("LuaComponent", {
+				script_source_file="mods/userk.things/files/gold_is_dust/collect_gold.lua"
+			})
+		}))
 	end
 end

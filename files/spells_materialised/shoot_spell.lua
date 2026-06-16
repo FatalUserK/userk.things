@@ -20,11 +20,7 @@ function shot(projectile)
 	if uses_remaining == 0 then return end
 
 	local id = ComponentGetValue2(item_action_comp, "action_id")
-	if SPELLS_MATERIALISED_CUSTOM_BEHAVIOUR[id] then
-		SPELLS_MATERIALISED_CUSTOM_BEHAVIOUR[id](entity_id, inv2, held_item, uses_remaining)
-	else
-		normal_cast(entity_id, id)
-	end
+	cast(entity_id, id, inv2, held_item, uses_remaining)
 
 	if uses_remaining ~= -1 then
 		ComponentSetValue2(item_comp, "uses_remaining", uses_remaining - 1)

@@ -1,5 +1,6 @@
-mat_GID_bloody_gold,bloody gold,,,,,,,,,,,,,
 userk.gold_is_dust.perkname,Gold Is Dust,,,,,,,,,,,,,
 userk.gold_is_dust.perkdesc,Gold nuggets decay into dust.,,,,,,,,,,,,,
 userk.spells_materialised.perkname,Spells Materialised,,,,,,,,,,,,,
 userk.spells_materialised.perkdesc,Spells can be held in the ITEMS space in inventory and used like throwable items.,,,,,,,,,,,,,
+userk.extra_mana.perkdesc,"Your currently held wand loses some of its capacity, but gains more mana.",,,,,,,,,,,,,
+userk.bloody_gold.material,bloody gold,,,,,,,,,,,,,

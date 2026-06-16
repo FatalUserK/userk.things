@@ -1,4 +1,4 @@
-<Entity>
+<Entity name="$animal_player">
 	<LifetimeComponent lifetime="1"/>
 
 	<InheritTransformComponent/>

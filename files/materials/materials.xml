@@ -1,22 +1,51 @@
 <Materials>
 	<CellDataChild
 		_parent="gold"
-		name="GID_gold"
-		ui_name="$mat_gold"
 		_inherit_reactions="1"
+		name="userk.greedy_gold"
+		tags="[sand_metal],[corrodible],[alchemy],[gold],[solid],[earth],[userk.gold],[wallet_money]"
 		wang_color="ffebc802"
 	/>
 
 	<CellDataChild
-		_parent="gold"
-		name="GID_bloody_gold"
-		ui_name="$mat_GID_bloody_gold"
+		_parent="userk.greedy_gold"
 		_inherit_reactions="1"
+		name="userk.greedy_gold.10"
+		wang_color="ffebc803"
+	/>
+
+	<CellDataChild
+		_parent="userk.greedy_gold"
+		_inherit_reactions="1"
+		name="userk.greedy_gold.100"
+		wang_color="ffebc804"
+	/>
+
+
+	<CellDataChild
+		_parent="userk.greedy_gold"
+		_inherit_reactions="1"
+		name="userk.bloody_gold"
 		wang_color="fff73a36"
+		ui_name="$userk.bloody_gold.material"
 	>
 		<Graphics
 			texture_file="mods/userk.things/files/materials/bloody_gold.png"
 			color="fff73a36"
 		/>
 	</CellDataChild>
+
+	<CellDataChild
+		_parent="userk.bloody_gold"
+		_inherit_reactions="1"
+		name="userk.bloody_gold.10"
+		wang_color="fff73a37"
+	/>
+
+	<CellDataChild
+		_parent="userk.bloody_gold"
+		_inherit_reactions="1"
+		name="userk.bloody_gold.100"
+		wang_color="fff73a38"
+	/>
 </Materials>
