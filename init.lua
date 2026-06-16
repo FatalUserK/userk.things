@@ -58,6 +58,9 @@ if settings.gold_is_dust then
 	ModMaterialsFileAdd("mods/userk.things/files/materials/materials.xml")
 	--if ModSettingGet("GID.vanilla_bloody then") then ModMaterialsFileAdd("mods/userk.things/files/materials/materials_extra_bloody.xml") end
 
+	if ModIsEnabled("prospector-perk") then
+		ModLuaFileAppend("mods/prospector-perk/files/perk/prospector.lua", "mods/userk.things/files/gold_is_dust/append_prospector.lua")
+	end
 
 	local list_of_nuggets = {
 		"data/entities/items/pickup/goldnugget.xml",

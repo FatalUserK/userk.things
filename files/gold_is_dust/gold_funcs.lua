@@ -35,6 +35,6 @@ GoldFunctions = {
 	},
 	["userk.bloody_gold.100"] = {
 		func = blood_heal,
-	worth = 100,
+		worth = 100,
 	},
 }
